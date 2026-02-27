@@ -43,8 +43,135 @@
   --color-primary-900: var(--primary-900);
 }
 
+@layer base {
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Service card hover animations */
+  .service-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(242, 161, 46, 0.1), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .service-card:hover::before {
+    left: 100%;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 10px 25px -5px rgba(0, 0, 0, 0.1),
+      0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    border-color: rgba(242, 161, 46, 0.3);
+  }
+
+  /* FAQ animations */
+  .faq-item {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+  }
+
+  .faq-item:hover {
+    border-color: rgba(242, 161, 46, 0.3);
+    background-color: rgba(242, 161, 46, 0.02);
+  }
+
+  .faq-item[open] {
+    border-color: rgba(242, 161, 46, 0.5);
+    background-color: rgba(242, 161, 46, 0.08);
+    box-shadow:
+      0 4px 12px rgba(242, 161, 46, 0.1),
+      inset 0 1px 2px rgba(242, 161, 46, 0.05);
+  }
+
+  .faq-summary {
+    position: relative;
+    padding-right: 2.5rem;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+
+  .faq-summary:hover {
+    color: #d69d2e;
+  }
+
+  .faq-icon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+    color: #f2a12e;
+    flex-shrink: 0;
+  }
+
+  .faq-item[open] .faq-icon {
+    animation: bounceRotate 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  }
+
+  @keyframes bounceRotate {
+    0% {
+      transform: translateY(-50%) rotate(0deg);
+    }
+    100% {
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
+
+  .faq-content {
+    animation: slideInScale 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    transform-origin: top;
+  }
+
+  @keyframes slideInScale {
+    0% {
+      opacity: 0;
+      transform: translateY(-12px) scale(0.98);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* Service icon pulse on hover */
+  .service-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .service-card:hover .service-icon {
+    transform: scale(1.1);
+  }
+}
+
 * {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -112,6 +239,10 @@ textarea:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .mobile-nav {
     animation: none;
   }
