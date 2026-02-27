@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@300;400;500;600;700&display=swap');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+@import 'aos/dist/aos.css';
 @import 'tailwindcss';
 
 :root {
@@ -44,19 +44,6 @@
 }
 
 @layer base {
-  .reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    transition:
-      opacity 0.6s ease,
-      transform 0.6s ease;
-  }
-
-  .reveal.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
   /* Service card hover animations */
   .service-card {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -89,7 +76,10 @@
 
   /* FAQ animations */
   .faq-item {
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition:
+      border-color 0.25s ease,
+      background-color 0.25s ease,
+      box-shadow 0.25s ease;
     overflow: hidden;
   }
 
@@ -123,37 +113,36 @@
     right: 0;
     top: 50%;
     transform: translateY(-50%) rotate(0deg);
+    transition: transform 0.25s ease;
     color: #f2a12e;
     flex-shrink: 0;
   }
 
   .faq-item[open] .faq-icon {
-    animation: bounceRotate 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    transform: translateY(-50%) rotate(90deg);
   }
 
-  @keyframes bounceRotate {
-    0% {
-      transform: translateY(-50%) rotate(0deg);
-    }
-    100% {
-      transform: translateY(-50%) rotate(180deg);
-    }
+  .faq-content-wrap {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    margin-top: 0;
+    transition:
+      grid-template-rows 0.3s ease,
+      opacity 0.2s ease,
+      margin-top 0.3s ease;
+  }
+
+  .faq-item[open] .faq-content-wrap {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    margin-top: 0.75rem;
   }
 
   .faq-content {
-    animation: slideInScale 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-    transform-origin: top;
-  }
-
-  @keyframes slideInScale {
-    0% {
-      opacity: 0;
-      transform: translateY(-12px) scale(0.98);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
+    overflow: hidden;
+    margin: 0;
+    padding-left: 1.5rem;
   }
 
   /* Service icon pulse on hover */
@@ -499,42 +488,6 @@ textarea:focus-visible {
 .link-underline:hover::after,
 .link-underline:focus-visible::after {
   width: 100%;
-}
-
-@keyframes rise-in {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-rise {
-  animation: rise-in 0.7s ease both;
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition:
-    opacity 0.6s ease,
-    transform 0.6s ease;
-}
-
-.reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
 }
 
 @media (max-width: 720px) {

@@ -1,59 +1,93 @@
-# ZeCoach
+# Ze Coach
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.2.
+Landing page for **Ze Coach Consulting**, built with Angular 21 and Tailwind CSS v4.
 
-## Development server
+The site presents the brand, services catalogue, coaching modalities, FAQ, and social contact channels.
 
-To start a local development server, run:
+## Highlights
 
-```bash
-ng serve
-```
+- Modern single-page marketing site (Angular standalone components + routing)
+- Service catalogue organized by business sectors
+- Animated UI interactions (AOS + custom CSS transitions)
+- Responsive layout optimized for mobile and desktop
+- Tailwind CSS v4 with custom design tokens
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Tech Stack
 
-## Code scaffolding
+- Angular 21
+- TypeScript 5
+- Tailwind CSS 4
+- Lucide Angular icons
+- AOS (Animate On Scroll)
+- pnpm
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Getting Started
 
-```bash
-ng generate component component-name
-```
+### Prerequisites
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- Node.js 20+
+- pnpm 10+
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### Install
 
 ```bash
-ng test
+pnpm install
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+### Run locally
 
 ```bash
-ng e2e
+pnpm start
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+App runs at `http://localhost:4200/`.
 
-## Additional Resources
+## Available Scripts
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- `pnpm start`: Start dev server
+- `pnpm build`: Create production build
+- `pnpm watch`: Build in watch mode (development config)
+- `pnpm test`: Run unit tests
+
+## Project Structure
+
+```text
+src/
+  app/
+    landing/
+      components/
+        header/
+        overview/
+        services/
+        modalities/
+        faq/
+        media/
+        footer/
+      pages/
+        landing.html
+        landing.ts
+      landing.routes.ts
+  styles.css
+public/
+  logo.png
+  images/rodi.png
+  docs/catalogue.pdf
+```
+
+## Content Notes
+
+- Main page content is in `src/app/landing/components/*/*.html`.
+- The downloadable catalogue file is stored at `public/docs/catalogue.pdf`.
+- Global theme tokens and custom animations are defined in `src/styles.css`.
+
+## Build Output
+
+```bash
+pnpm build
+```
+
+Production assets are generated in the Angular output directory (`dist/`).
+
+## License
+
+Private project.
