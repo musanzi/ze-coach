@@ -1,1 +1,9 @@
+<div class="page-loader" [class.page-loader--active]="isPageLoading()" [attr.aria-hidden]="!isPageLoading()">
+  <div class="page-loader__card" role="status" aria-live="polite" aria-label="Loading page content">
+    <div class="page-loader__logo">ZE</div>
+    <div class="page-loader__spinner"></div>
+    <p class="page-loader__text">Preparing your coaching space...</p>
+  </div>
+</div>
+
 <router-outlet />
