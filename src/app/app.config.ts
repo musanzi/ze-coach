@@ -1,8 +1,13 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, TitleStrategy } from '@angular/router';
 
 import { routes } from './app.routes';
+import { PageTitleStrategy } from './page-title.strategy';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideBrowserGlobalErrorListeners(), provideRouter(routes)],
+  providers: [
+    { provide: TitleStrategy, useClass: PageTitleStrategy },
+    provideBrowserGlobalErrorListeners(),
+    provideRouter(routes),
+  ],
 };
