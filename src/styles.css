@@ -1,3 +1,424 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@300;400;500;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+@import 'tailwindcss';
 
-@import "tailwindcss";
+:root {
+  --primary-50: #fff7eb;
+  --primary-100: #ffebcc;
+  --primary-200: #ffd79b;
+  --primary-300: #ffc066;
+  --primary-400: #f7ad43;
+  --primary-500: #f29a2f;
+  --primary-600: #d97d10;
+  --primary-700: #b96305;
+  --primary-800: #8e4b05;
+  --primary-900: #4a2a05;
+  --color-primary: var(--primary-500);
+  --color-primary-dark: var(--primary-700);
+  --color-primary-ink: var(--primary-900);
+  --color-accent: #2a6f7b;
+  --color-text: #1f1a15;
+  --color-muted: #5f554d;
+  --color-surface: #ffffff;
+  --color-surface-strong: #f7f2ea;
+  --color-surface-veil: rgba(255, 255, 255, 0.86);
+  --color-border: #eadfce;
+  --color-border-light: #f2e9dd;
+  --shadow-soft: 0 28px 60px -52px rgba(43, 32, 18, 0.6);
+  --shadow-card: 0 20px 50px -42px rgba(43, 32, 18, 0.5);
+  --font-display: 'Fraunces', 'Times New Roman', serif;
+  --font-body: 'Manrope', 'Segoe UI', sans-serif;
+}
+
+@theme {
+  --color-primary-50: var(--primary-50);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  --color-primary-800: var(--primary-800);
+  --color-primary-900: var(--primary-900);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: #ffffff;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(242, 154, 47, 0.45);
+  outline-offset: 2px;
+}
+
+.landing {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4.5rem;
+  display: grid;
+  gap: 2.5rem;
+}
+
+.navbar {
+  padding: 1.2rem 0;
+}
+
+.mobile-nav {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-radius: 18px;
+  background: var(--color-surface-veil);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  animation: dropdown 0.25s ease;
+  transform-origin: top;
+}
+
+@keyframes dropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scaleY(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-nav {
+    animation: none;
+  }
+}
+
+.section {
+  @apply my-16;
+}
+
+.section-heading {
+  max-width: 720px;
+  margin-bottom: 2rem;
+}
+
+.section--hero {
+  background: linear-gradient(180deg, #ffffff 0%, #fff5ec 100%);
+  border-color: #f3e5d5;
+}
+
+.section--reasons {
+  background: #f7fbfb;
+  border-color: #e1f0ef;
+}
+
+.section--audience {
+  background: #fff6ef;
+  border-color: #f2e2d4;
+}
+
+.section--catalogue {
+  background: #f6f8ff;
+  border-color: #e2e6f5;
+}
+
+.section--sessions {
+  background: #f3f9ff;
+  border-color: #e0eefc;
+}
+
+.section--modalities {
+  background: #f4fbf6;
+  border-color: #e0f1e6;
+}
+
+.section--faq {
+  background: #fff7f3;
+  border-color: #f2e0d6;
+}
+
+.section--contact {
+  background: #f5f7ff;
+  border-color: #e2e7fa;
+}
+
+.section--footer {
+  background: #ffffff;
+  border-color: #efe3d3;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  margin: 0 0 0.75rem;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  font-weight: 600;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.btn.primary {
+  background: var(--color-primary);
+  color: var(--color-primary-ink);
+  box-shadow: 0 16px 36px -26px rgba(242, 154, 47, 0.7);
+}
+
+.btn.primary:hover,
+.btn.primary:focus-visible {
+  transform: translateY(-1px);
+}
+
+.btn.ghost {
+  border-color: var(--color-border);
+  background: #fff;
+}
+
+.btn.ghost:hover,
+.btn.ghost:focus-visible {
+  border-color: var(--color-primary);
+}
+
+.surface-card {
+  background: var(--color-surface-veil);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(6px);
+}
+
+.lift-on-hover {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.lift-on-hover:hover {
+  transform: translateY(-4px);
+}
+
+.hero-grid {
+  margin-top: 2.5rem;
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.hero-title {
+  font-size: clamp(2.2rem, 3.2vw, 3.75rem);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.hero-lede {
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  color: var(--color-muted);
+}
+
+.hero-tags {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.hero-tag {
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: #ffffff;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.hero-actions {
+  margin-top: 1.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.hero-metrics {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  border-radius: 22px;
+  border: 1px solid var(--color-border);
+  background: #ffffff;
+  padding: 1.25rem 1.5rem;
+}
+
+.hero-metrics dt {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.hero-metrics dd {
+  margin: 0.2rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.hero-panel {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.hero-card {
+  border-radius: 26px;
+  border: 1px solid var(--color-border);
+  background: #ffffff;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+}
+
+.hero-card--accent {
+  background: linear-gradient(135deg, rgba(242, 154, 47, 0.2), rgba(42, 111, 123, 0.12));
+  border-color: rgba(242, 154, 47, 0.35);
+}
+
+.hero-profile {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: #ffffff;
+  padding: 0.3rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.input-field {
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 0.8rem 1rem;
+  font: inherit;
+  background: var(--color-surface-strong);
+}
+
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.25rem;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width 0.2s ease;
+}
+
+.link-underline:hover::after,
+.link-underline:focus-visible::after {
+  width: 100%;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-rise {
+  animation: rise-in 0.7s ease both;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .landing {
+    padding: 0 1.25rem 4rem;
+    gap: 2rem;
+  }
+
+  .section {
+    padding: 3.5rem 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+  }
+}
